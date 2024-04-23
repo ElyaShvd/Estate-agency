@@ -267,6 +267,31 @@ body {
   margin-inline: auto;
 }
 
+.section {
+  padding-block-end: 60px;
+}
+
+.title-wrapper {
+  margin-block-end: 32px;
+}
+
+.img-holder {
+  aspect-ratio: var(--width) / var(--height);
+  background-color: var(--neutral-80);
+  overflow: hidden;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
 
 /*-----------------------------------*\
   #COMPONENT
@@ -338,6 +363,127 @@ body {
 .icon-btn:where(:hover, :focus-visible) {
   background-color: var(--neutral-90);
 }
+
+/* badge */
+
+.badge {
+  height: 32px;
+  max-width: max-content;
+  display: grid;
+  place-items: center;
+  padding-inline: 16px;
+  background-color: var(--secondary-100);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-3);
+}
+
+/* card */
+
+.card {
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+}
+
+.card:where(:hover, :focus-within) {
+  box-shadow: var(--shadow-4);
+}
+
+.card-banner {
+  position: relative;
+}
+
+.card-banner .img-cover {
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.card:where(:hover, :focus-within) .img-cover {
+  scale: 1.05;
+  rotate: 2deg;
+}
+
+.card :where(.badge, .icon-btn) {
+  position: absolute;
+  top: 20px;
+}
+
+.card .badge {
+  left: 20px;
+}
+
+.card .icon-btn {
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  scale: 0.8;
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.fav-btn {
+  color: var(--error-100);
+}
+
+.fav-btn.active .material-symbols-rounded {
+  font-variation-settings: 'FILL' 1;
+}
+
+.card:where(:hover, :focus-within) .icon-btn {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
+}
+
+
+.card-content {
+padding: 20px 20px 24px;
+}
+
+
+.card-title {
+margin-block: 8px;
+color: var(--neutral-20);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+transition: var(--transition-duration-quick) var(--transition-easing-quick);
+}
+
+.card-title:where(:hover, :focus-visible) {
+color: var(--neutral-10);
+}
+
+.card-text {
+  color: var(--neutral-40);
+}
+
+.card-meta-list {
+  padding-block-start: 16px;
+  margin-block-start: 16px;
+  border-block-start: 1px solid var(--neutral-90);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+}
+
+.card .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--neutral-20);
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -551,7 +697,20 @@ height: 100%;
   #PROPERTY
 \*-----------------------------------*/
 
+.property {
+  padding-block-start: 60px;
+}
 
+.property .section-text {
+  margin-block: 8px 16px;
+  color: var(--neutral-30);
+}
+
+.property-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
 
 
 
@@ -560,6 +719,39 @@ height: 100%;
 \*-----------------------------------*/
 
 
+.feature-banner {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-extra-large);
+}
+
+.feature-content {
+  padding: 24px 16px 0;
+}
+
+.feature-content .feature-text {
+  margin-block: 16px;
+}
+
+.feature-text .feature-item {
+  color: var(--neutral-30);
+}
+
+.feature-list {
+  display: grid;
+  gap: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature-icon {
+  color: var(--primary-100);
+  font-size: 2.2rem;
+}
 
 
 
@@ -567,7 +759,40 @@ height: 100%;
   #VIDEO
 \*-----------------------------------*/
 
+.video-card {
+  height: 260px;
+  border-radius: 32px;
+  background: linear-gradient(0deg, #0000004D, #0000004D), url('../images/video-card.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
 
+.play-btn {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  background-color: var(--neutral-100);
+  color: var(--primary-100);
+  border-radius: var(--radius-circle);
+  animation: pulse 1.5s var(--transition-easing-quick) forwards infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #FFFFFF80;
+  } 
+  100% {
+    box-shadow: 0 0 0 20px #FFFFFF00;
+  } 
+}
+
+.play-btn .material-symbols-rounded {
+  font-size: 4rem;
+  font-variation-settings: 'FILL' 1;
+}
 
 
 
@@ -575,13 +800,107 @@ height: 100%;
   #STORY
 \*-----------------------------------*/
 
+.story .section-subtitle {
+  color: var(--primary-100);
+}
+
+.story .section-title {
+  margin-block: 12px;
+}
+
+.avatar-list {
+  display: flex;
+}
+
+.avatar {
+  position: relative;
+  width: 60px;
+  height: 46px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--neutral-98);
+  overflow: hidden;
+}
+
+.avatar:not(:first-child) {
+  margin-inline-start: -10px;
+}
+
+.avatar .overlay-content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: #000000BF;
+  color: var(--neutral-100);
+}
+
+.story .title-wrapper {
+  display: grid;
+  gap: 16px;
+}
+
+.story-list {
+  display: grid;
+  gap: 16px;
+}
+
+.story-card {
+  position: relative;
+  height: 360px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+}
 
 
+.story-card:where(:hover, :focus-visible) {
+  scale: 0.99;
+}
+
+.story-card .overlay-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #00000000 33.33%, #000000cc 100%);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 24px;
+}
+
+.story-card .rating-wrapper{
+  display: flex;
+  align-items: center;
+  margin-block-start: 8px;
+}
+
+.story-card .rating-text {
+  margin-inline-start: 12px;
+  color: var(--neutral-80);
+}
+
+.story-card .material-symbols-rounded {
+  font-variation-settings: 'FILL' 1;
+  color: var(--yellow);
+}
+
+.story-card .card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-circle);
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+}
 
 
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/
+
+
 
 
 
