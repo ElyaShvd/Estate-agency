@@ -1418,6 +1418,10 @@ button {
 }
 
 body {
+  color: var(--neutral-10);
+}
+
+.login {
   color: var(--white-color);
 }
 
